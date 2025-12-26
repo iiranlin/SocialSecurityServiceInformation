@@ -7,9 +7,10 @@ import { SERVICE_DATA } from '../data';
 
 interface HomeProps {
   onSelectService: (id: number) => void;
+  onOpenNotification: () => void;
 }
 
-const Home: React.FC<HomeProps> = ({ onSelectService }) => {
+const Home: React.FC<HomeProps> = ({ onSelectService, onOpenNotification }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -62,7 +63,10 @@ const Home: React.FC<HomeProps> = ({ onSelectService }) => {
       />
       
       {/* Quick Access Grid */}
-      <QuickNav onSelectService={onSelectService} />
+      <QuickNav 
+        onSelectService={onSelectService} 
+        onOpenNotification={onOpenNotification}
+      />
 
       {/* Main Content List */}
       <div className="px-4 relative z-10">
@@ -101,9 +105,6 @@ const Home: React.FC<HomeProps> = ({ onSelectService }) => {
         
         {/* Elegant Footer */}
         <div className="mt-10 mb-6 flex flex-col items-center justify-center opacity-60">
-           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mb-2">
-              <div className="w-4 h-4 border-2 border-gray-400 rounded-full border-t-transparent animate-spin"></div>
-           </div>
            <p className="text-[10px] text-gray-400 font-medium tracking-wide">
              江阳区社会保险中心 · 用心服务
            </p>

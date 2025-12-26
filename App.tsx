@@ -4,6 +4,8 @@ import Detail from './views/Detail';
 import { SERVICE_DATA } from './data';
 import { ViewState } from './types';
 
+import NotificationDetail from './views/NotificationDetail';
+
 const App: React.FC = () => {
   const [viewState, setViewState] = useState<ViewState>('HOME');
   const [selectedServiceId, setSelectedServiceId] = useState<number | null>(null);
@@ -18,6 +20,10 @@ const App: React.FC = () => {
     setSelectedServiceId(null);
   };
 
+  const handleOpenNotification = () => {
+    setViewState('NOTIFICATION');
+  };
+
   const selectedItem = selectedServiceId 
     ? SERVICE_DATA.find(item => item.id === selectedServiceId) 
     : null;
@@ -25,12 +31,21 @@ const App: React.FC = () => {
   return (
     <div className="max-w-md mx-auto bg-slate-50 min-h-screen shadow-2xl overflow-hidden">
       {viewState === 'HOME' && (
-        <Home onSelectService={handleSelectService} />
+        <Home 
+          onSelectService={handleSelectService} 
+          onOpenNotification={handleOpenNotification}
+        />
       )}
       
       {viewState === 'DETAIL' && selectedItem && (
         <Detail 
           item={selectedItem} 
+          onBack={handleBackToHome} 
+        />
+      )}
+
+      {viewState === 'NOTIFICATION' && (
+        <NotificationDetail 
           onBack={handleBackToHome} 
         />
       )}

@@ -8,4 +8,4 @@ export interface ServiceItem {
   isHot?: boolean; // Show a "Hot" badge
 }
 
-export type ViewState = 'HOME' | 'DETAIL';
+export type ViewState = 'HOME' | 'DETAIL' | 'NOTIFICATION';
