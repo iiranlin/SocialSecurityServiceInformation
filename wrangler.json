@@ -1,5 +1,5 @@
 {
-    "name": "social-security-service",
+    "name": "social-security-service-information",
     "compatibility_date": "2025-12-24",
     "assets": {
         "directory": "./dist"
